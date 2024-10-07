@@ -112,15 +112,12 @@ export default function Home() {
 
 
   const onPlayerReadyYoutube: any = () => {
-    const player: any = playerRef.current;
-    console.log('Opa', player.getPlayerState())
+    const player: any = playerRef?.current;
 
     // Verifica se o vídeo terminou (estado 0 - video ended)
     if (player.getPlayerState() === 1) {
       player.pauseVideo();
     } else {
-      // Adicione aqui o que você deseja fazer se o vídeo não estiver no estado "encerrado"
-      // Por exemplo, começar a tocar o vídeo
       player.playVideo();  // Inicia a reprodução se o vídeo não estiver encerrado
     }
   };
