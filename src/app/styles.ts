@@ -93,6 +93,13 @@ export const WrapperVideoYoutube = styled.div`
     position: relative;
     cursor: pointer;
 
+    div {
+        height: 30%;
+        width: 100%;
+        background-color: transparent;
+        position: absolute;
+    }
+
     iframe {
         width: 2048px;
         height: 1080px;

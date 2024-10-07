@@ -181,7 +181,7 @@ const reloadVideo = () => {
 
   // Função para ir para um tempo específico no vídeo (em segundos)
   const goToTime = (seconds: any) => {
-    const videoId = '1-2all8OrpeJJ3lpt20TUTjkhrbj8s7dX'; // ID do seu vídeo
+    const videoId = '1g2IqvhGgflzNtoy0IFvy7iqkuqZDxdf4'; // ID do seu vídeo
     const timeParam = `t=${seconds}`;
     playerRef.current.src = `https://drive.google.com/file/d/${videoId}/preview?${timeParam}`;
     playerRef.current.allow = 'autoplay'
@@ -195,21 +195,22 @@ const reloadVideo = () => {
 
 
 
-
   return (
     <>
       <Navbar />
       <Container onScroll={handleScroll}>
         <Section ref={sectionRef} id="live" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} $Background={'#000'}>
           <WrapperVideoYoutube>
+          <div></div>
           <iframe
               ref={playerRef}
-              src="https://drive.google.com/file/d/1-2all8OrpeJJ3lpt20TUTjkhrbj8s7dX/preview"
+              src="https://drive.google.com/file/d/1g2IqvhGgflzNtoy0IFvy7iqkuqZDxdf4/preview"
               width="2560"
               height="1080"
               allow="autoplay"
               title="Video"
             ></iframe>
+            
           </WrapperVideoYoutube>
         </Section>
         <Section id="setlist" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} $Background={'#DBC5AE'}>
