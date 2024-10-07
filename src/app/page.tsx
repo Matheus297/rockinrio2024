@@ -195,14 +195,6 @@ const reloadVideo = () => {
 
 
 
-  useEffect(() => {
-    window.addEventListener('click', () => {
-      playerRef.current.src = `https://drive.google.com/file/d/1-2all8OrpeJJ3lpt20TUTjkhrbj8s7dX/preview`;
-      playerRef.current.allow = 'autoplay'
-    })
-  }, [])
-
-
 
   return (
     <>
