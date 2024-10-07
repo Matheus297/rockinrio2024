@@ -18,6 +18,7 @@ import {
   DeathImage,
   FoiceImageStyle,
   GridContainer,
+  
   ProfileImage,
   Section,
   TheRevContent,
@@ -114,15 +115,10 @@ export default function Home() {
   const onPlayerReadyYoutube: any = () => {
     const player: any = playerRef?.current;
   
-    if (player && typeof player.getPlayerState === 'function') {
-      // Verifica se o vídeo está em reprodução (estado 1 - playing)
-      if (player.getPlayerState() === 1) {
-        player.pauseVideo();  // Pausa o vídeo se estiver em reprodução
-      } else {
-        player.playVideo();  // Inicia a reprodução se não estiver tocando
-      }
+    if (player.getPlayerState() === 1) {
+      player.pauseVideo();  // Pausa o vídeo se estiver em reprodução
     } else {
-      console.error("Player is not ready or getPlayerState is not a function");
+      player.playVideo();  // Inicia a reprodução se não estiver tocando
     }
   };
 
@@ -169,8 +165,7 @@ export default function Home() {
   const onPlayerReady = (event: any) => {
     console.log('TEMPO', event);
     
-    if (playerRef?.current) {
-        playerRef.current = event.target;  // Guarda o player na referência
+      playerRef.current = event.target;  // Guarda o player na referência
         
         // Verifica se o método seekTo existe e executa se possível
         if (typeof playerRef.current.seekTo === 'function') {
@@ -178,9 +173,6 @@ export default function Home() {
         } else {
             console.error("seekTo is not a function on the player");
         }
-    } else {
-        console.error("playerRef is not initialized");
-    }
 };
 
 

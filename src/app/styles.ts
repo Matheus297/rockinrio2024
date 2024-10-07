@@ -662,11 +662,7 @@ export const Section = styled.section<Props>`
             }
         }
 
-        ${WrapperTheRevImage} {
-            width: 300px;
-            height: 300px;
-        }
-
+       
         ${TheRevHistory} {
             font-size: 1.2rem;
             width: 800px;
@@ -686,10 +682,11 @@ export const Section = styled.section<Props>`
             align-items: center;
         }
 
-        ${WrapperAlbumImage} {
-            width: 250px;
-            height: 250px;
+        ${WrapperTheRevImage} {
+            width: 450px;
+            height: 450px;
         }
+
         
         ${AlbumContainer} {
             width: 500px;
