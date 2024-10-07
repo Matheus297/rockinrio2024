@@ -167,18 +167,6 @@ export default function Home() {
       playerRef.current.seekTo(428, true);
 };
 
-
-useEffect(() => {
-  // Altera o src do iframe sempre que 'reload' mudar
-  if (playerRef.current) {
-    playerRef.current.src = `https://drive.google.com/file/d/${videoId}/preview`;
-  }
-}, [reload]); // Executa sempre que 'reload' mudar
-
-const reloadVideo = () => {
-  setReload(prev => !prev); // Alterna o estado 'reload'
-};
-
   // Função para ir para um tempo específico no vídeo (em segundos)
   const goToTime = (seconds: any) => {
     const videoId = '1g2IqvhGgflzNtoy0IFvy7iqkuqZDxdf4'; // ID do seu vídeo
