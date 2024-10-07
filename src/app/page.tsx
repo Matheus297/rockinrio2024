@@ -114,12 +114,12 @@ export default function Home() {
   const onPlayerReadyYoutube: any = () => {
     const player: any = playerRef?.current;
   
-    if (player && typeof player.getPlayerState === 'function') {
+    if (player && typeof player?.getPlayerState === 'function') {
       // Verifica se o vídeo está em reprodução (estado 1 - playing)
-      if (player.getPlayerState() === 1) {
-        player.pauseVideo();  // Pausa o vídeo se estiver em reprodução
+      if (player?.getPlayerState() === 1) {
+        player?.pauseVideo();  // Pausa o vídeo se estiver em reprodução
       } else {
-        player.playVideo();  // Inicia a reprodução se não estiver tocando
+        player?.playVideo();  // Inicia a reprodução se não estiver tocando
       }
     } else {
       console.error("Player is not ready or getPlayerState is not a function");
