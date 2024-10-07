@@ -48,7 +48,7 @@ import Profile from '../assets/profile.jpg'
 export default function Home() {
   const [scrollTop, setScrollTop] = useState(0);
   const [stateClick, setStateClick] = useState<boolean>(false);
-  const playerRef = useRef(null)
+  const playerRef = useRef<any>(null)
   const sectionRef = useRef<any>(null);
 
   const [setList, setSetList] = useState<any>([
