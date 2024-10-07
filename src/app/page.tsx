@@ -50,63 +50,66 @@ export default function Home() {
   const [stateClick, setStateClick] = useState<boolean>(false);
   const playerRef = useRef<any>(null)
   const sectionRef = useRef<any>(null);
+  const [reload, setReload] = useState(false); // Estado para forçar o reload
+
+  const videoId = '1-2all8OrpeJJ3lpt20TUTjkhrbj8s7dX'; // ID do vídeo
 
   const [setList, setSetList] = useState<any>([
     {
       name: 'Game over',
-      time: 428
+      time: 0
     },
     {
       name: 'Afterlife',
-      time: 662
+      time: 225
     },
     {
       name: 'Mattel',
-      time: 1032
+      time: 593
     },
     {
       name: 'Hail to the king',
-      time: 1362
+      time: 965
     },
     {
       name: 'The stage',
-      time: 1750
+      time: 1304
     },
     {
       name: 'Buried alive',
-      time: 2281
+      time: 1836
     },
     {
       name: 'Gunslinger',
-      time: 2842
+      time: 2420
     },
     {
       name: 'Bat country',
-      time: 3148
+      time: 2702
     },
     {
       name: 'So far away',
-      time: 3620
+      time: 3177
     },
     {
       name: 'Nobody',
-      time: 3978
+      time: 3540
     },
     {
       name: 'Nightmare',
-      time: 4417
+      time: 3976
     },
     {
       name: 'Uhnholy confessions',
-      time: 4804
+      time: 4354
     },
     {
       name: 'Cosmic',
-      time: 5328
+      time: 4877
     },
     {
       name: 'A little piece of heaven',
-      time: 5785
+      time: 5348
     }
   ])
 
@@ -160,24 +163,44 @@ export default function Home() {
 
 
   const onPlayerReady = (event: any) => {
-    
       playerRef.current = event.target;  // Guarda o player na referência
       playerRef.current.seekTo(428, true);
 };
 
 
+useEffect(() => {
+  // Altera o src do iframe sempre que 'reload' mudar
+  if (playerRef.current) {
+    playerRef.current.src = `https://drive.google.com/file/d/${videoId}/preview`;
+  }
+}, [reload]); // Executa sempre que 'reload' mudar
+
+const reloadVideo = () => {
+  setReload(prev => !prev); // Alterna o estado 'reload'
+};
+
   // Função para ir para um tempo específico no vídeo (em segundos)
-  const goToTime = (seconds?: any) => {
-    if (playerRef.current) {
-      playerRef.current?.seekTo(seconds, true);  // Segundo argumento: true = tempo exato
-      if (sectionRef) {
-        sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
-      }
+  const goToTime = (seconds: any) => {
+    const videoId = '1-2all8OrpeJJ3lpt20TUTjkhrbj8s7dX'; // ID do seu vídeo
+    const timeParam = `t=${seconds}`;
+    playerRef.current.src = `https://drive.google.com/file/d/${videoId}/preview?${timeParam}`;
+    playerRef.current.allow = 'autoplay'
+
+
+    if (sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
 
 
+
+  useEffect(() => {
+    window.addEventListener('click', () => {
+      playerRef.current.src = `https://drive.google.com/file/d/1-2all8OrpeJJ3lpt20TUTjkhrbj8s7dX/preview`;
+      playerRef.current.allow = 'autoplay'
+    })
+  }, [])
 
 
 
@@ -186,8 +209,15 @@ export default function Home() {
       <Navbar />
       <Container onScroll={handleScroll}>
         <Section ref={sectionRef} id="live" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} $Background={'#000'}>
-          <WrapperVideoYoutube onClick={() => onPlayerReadyYoutube()}>
-            <YoutubePlayer videoId="W0ztYoWRDAM" opts={opts} onReady={onPlayerReady} />
+          <WrapperVideoYoutube>
+          <iframe
+              ref={playerRef}
+              src="https://drive.google.com/file/d/1-2all8OrpeJJ3lpt20TUTjkhrbj8s7dX/preview"
+              width="2560"
+              height="1080"
+              allow="autoplay"
+              title="Video"
+            ></iframe>
           </WrapperVideoYoutube>
         </Section>
         <Section id="setlist" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} $Background={'#DBC5AE'}>

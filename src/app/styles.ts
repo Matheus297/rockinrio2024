@@ -92,25 +92,11 @@ export const WrapperVideoYoutube = styled.div`
     scale: 0.7;
     position: relative;
     cursor: pointer;
-`;
 
-export const WrapperVideoYoutubeCustom = styled.div`
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 9999;
-
-`;
-
-export const YoutubePlayer = styled(YouTube)`
-    width: 100%;
-    height: 100%;
-    z-index: 9998;
-    
     iframe {
         width: 2048px;
         height: 1080px;
-        pointer-events: none;
+        border: none;
 
         @media only screen and (min-width: 200px) and (max-width: 520px) {
             width: 480px;
@@ -141,6 +127,20 @@ export const YoutubePlayer = styled(YouTube)`
             height: 980px;
         }
     }
+`;
+
+export const WrapperVideoYoutubeCustom = styled.div`
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+
+`;
+
+export const YoutubePlayer = styled(YouTube)`
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
 
 `;
 
