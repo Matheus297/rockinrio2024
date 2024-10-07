@@ -18,7 +18,6 @@ import {
   DeathImage,
   FoiceImageStyle,
   GridContainer,
-  
   ProfileImage,
   Section,
   TheRevContent,
@@ -113,7 +112,7 @@ export default function Home() {
 
 
   const onPlayerReadyYoutube: any = () => {
-    const player: any = playerRef?.current;
+    const player: any = playerRef.current;
   
     if (player.getPlayerState() === 1) {
       player.pauseVideo();  // Pausa o vídeo se estiver em reprodução
@@ -133,7 +132,6 @@ export default function Home() {
       showinfo: 0,
       fs: 0,
       iv_load_policy: 3,
-      cc_load_policy: 1
     },
   };
 
@@ -163,23 +161,15 @@ export default function Home() {
 
 
   const onPlayerReady = (event: any) => {
-    console.log('TEMPO', event);
     
       playerRef.current = event.target;  // Guarda o player na referência
-        
-        // Verifica se o método seekTo existe e executa se possível
-        if (typeof playerRef.current.seekTo === 'function') {
-            playerRef.current.seekTo(428, true);
-        } else {
-            console.error("seekTo is not a function on the player");
-        }
+      playerRef.current.seekTo(428, true);
 };
 
 
   // Função para ir para um tempo específico no vídeo (em segundos)
   const goToTime = (seconds?: any) => {
     if (playerRef.current) {
-      const playerState = playerRef.current.getPlayerState();
       playerRef.current?.seekTo(seconds, true);  // Segundo argumento: true = tempo exato
       if (sectionRef) {
         sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
