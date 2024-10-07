@@ -143,7 +143,6 @@ export default function Home() {
 
   const {
     setShowNavbar,
-    showNavbar,
     setTypeLanguage,
     typeLanguage,
     verifyTypeLanguage
@@ -188,7 +187,7 @@ export default function Home() {
       <Container onScroll={handleScroll}>
         <Section ref={sectionRef} id="live" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} $Background={'#000'}>
           <WrapperVideoYoutube onClick={() => onPlayerReadyYoutube()}>
-            <YoutubePlayer videoId="llODqTqpoOU" opts={opts} onReady={onPlayerReady} />
+            <YoutubePlayer videoId="W0ztYoWRDAM" opts={opts} onReady={onPlayerReady} />
           </WrapperVideoYoutube>
         </Section>
         <Section id="setlist" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} $Background={'#DBC5AE'}>
