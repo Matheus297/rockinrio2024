@@ -1,95 +1,255 @@
+"use client"
+
 import Image from "next/image";
 import styles from "./page.module.css";
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+import DeathBatImage from '../assets/deathbat.gif'
+import FoiceImage from '../assets/foice.png'
+import LibadImage from '../assets/libad-image.png'
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+import {
+  AboutMe,
+  AboutMeText,
+  AlbumContainer,
+  ButtonItem,
+  Container,
+  ContentImage,
+  DeathImage,
+  FoiceImageStyle,
+  GridContainer,
+  ProfileImage,
+  Section,
+  TheRevContent,
+  TheRevHistory,
+  WidthPath,
+  WrapperAlbumImage,
+  WrapperAlbum,
+  WrapperContentAlbum,
+  WrapperDeathImage,
+  WrapperImage,
+  WrapperProfile,
+  WrapperTheRevImage,
+  WrapperVideoYoutube,
+  WrapperVideoYoutubeCustom,
+  YoutubePlayer
+
+} from './styles'
+import { useContext, useEffect, useRef, useState } from "react";
+import Navbar from "@/components/Navbar";
+import { MainContext } from "@/context/context";
+
+
+
+import TheRevPhoto from '../assets/rev.jpeg'
+import Profile from '../assets/profile.jpg'
+
+
+export default function Home() {
+  const [scrollTop, setScrollTop] = useState(0);
+  const [stateClick, setStateClick] = useState<boolean>(false);
+  const playerRef = useRef(null)
+  const sectionRef = useRef<any>(null);
+
+  const [setList, setSetList] = useState<any>([
+    {
+      name: 'Game over',
+      time: 428
+    },
+    {
+      name: 'Afterlife',
+      time: 662
+    },
+    {
+      name: 'Mattel',
+      time: 1032
+    },
+    {
+      name: 'Hail to the king',
+      time: 1362
+    },
+    {
+      name: 'The stage',
+      time: 1750
+    },
+    {
+      name: 'Buried alive',
+      time: 2281
+    },
+    {
+      name: 'Gunslinger',
+      time: 2842
+    },
+    {
+      name: 'Bat country',
+      time: 3148
+    },
+    {
+      name: 'So far away',
+      time: 3620
+    },
+    {
+      name: 'Nobody',
+      time: 3978
+    },
+    {
+      name: 'Nightmare',
+      time: 4417
+    },
+    {
+      name: 'Uhnholy confessions',
+      time: 4804
+    },
+    {
+      name: 'Cosmic',
+      time: 5328
+    },
+    {
+      name: 'A little piece of heaven',
+      time: 5785
+    }
+  ])
+
+
+  const onPlayerReadyYoutube: any = () => {
+    const player = playerRef.current;
+    console.log('Opa', player.getPlayerState())
+
+    // Verifica se o vídeo terminou (estado 0 - video ended)
+    if (player.getPlayerState() === 1) {
+      player.pauseVideo();
+    } else {
+      // Adicione aqui o que você deseja fazer se o vídeo não estiver no estado "encerrado"
+      // Por exemplo, começar a tocar o vídeo
+      player.playVideo();  // Inicia a reprodução se o vídeo não estiver encerrado
+    }
+  };
+
+
+  const opts = {
+    playerVars: {
+      autoplay: 1,        // Começa a tocar automaticamente
+      controls: 0,
+      disablekb: 1,       // Desativa o teclado
+      modestbranding: 0,
+      rel: 0,
+      showinfo: 0,
+      fs: 0,
+      iv_load_policy: 3,
+      cc_load_policy: 1
+    },
+  };
+
+  const MainContextProvider = useContext(MainContext);
+
+  if (!MainContextProvider) {
+    throw new Error('MainContext deve ser usado dentro de um MainProvider');
+  }
+
+  const {
+    setShowNavbar,
+    showNavbar,
+    setTypeLanguage,
+    typeLanguage,
+    verifyTypeLanguage
+  } = MainContextProvider;
+
+  const handleScroll = (event?: any) => {
+    setScrollTop(event.currentTarget.scrollTop);
+    if (scrollTop > 560) {
+      setShowNavbar(false)
+    } else {
+      setShowNavbar(true)
+    }
+  };
+
+
+
+  const onPlayerReady = (event: any) => {
+    console.log('TEMPO', event)
+    playerRef.current = event.target;  // Guarda o player na referência
+    playerRef.current.seekTo(428, true);
+  };
+
+  // Função para ir para um tempo específico no vídeo (em segundos)
+  const goToTime = (seconds?: any) => {
+    if (playerRef.current) {
+      const playerState = playerRef.current.getPlayerState();
+      playerRef.current?.seekTo(seconds, true);  // Segundo argumento: true = tempo exato
+      if (sectionRef) {
+        sectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+
+
+
+
+
+  return (
+    <>
+      <Navbar />
+      <Container onScroll={handleScroll}>
+        <Section ref={sectionRef} id="live" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} $Background={'#000'}>
+          <WrapperVideoYoutube onClick={() => onPlayerReadyYoutube()}>
+            <YoutubePlayer videoId="llODqTqpoOU" opts={opts} onReady={onPlayerReady} />
+          </WrapperVideoYoutube>
+        </Section>
+        <Section id="setlist" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} $Background={'#DBC5AE'}>
+          <ul>
+            {setList.map((set: any, index: number) => {
+              return (
+                <ButtonItem key={index} onClick={() => goToTime(set?.time)}>
+                  <li>{index + 1}.{' '}{set?.name}</li>
+                </ButtonItem>
+              )
+            })}
+          </ul>
+          <WrapperDeathImage>
+            <DeathImage src={LibadImage} alt='deathbat' />
+            <FoiceImageStyle src={FoiceImage} alt='deathbat' />
+          </WrapperDeathImage>
+          <WrapperImage>
+            <ContentImage>
+              <WidthPath></WidthPath>
+              <Image style={{ width: '100%', height: '100%' }} src={DeathBatImage} alt='deathbat' />
+            </ContentImage>
+          </WrapperImage>
+        </Section>
+        <Section style={{ display: 'flex', justifyContent: 'center' }} id="albums" $Background={'#000'}>
+          
+          <WrapperContentAlbum>
+            <GridContainer>
+            {typeLanguage?.albums?.map((album: any, index: number) => {
+              return (
+                <WrapperAlbum key={index} style={{ top: album?.top }}>
+                  <AlbumContainer>
+                    <h1>{album?.title}</h1>
+                    <div>{album?.about}</div>
+                  </AlbumContainer>
+                  <WrapperAlbumImage src={album?.image} alt='liab' />
+                </WrapperAlbum>
+              )
+            })}
+            </GridContainer>
+          </WrapperContentAlbum>
+        </Section>
+        <Section style={{ display: 'flex', justifyContent: 'center' }} id="forever" $Background={'#fff'}>
+          <TheRevContent>
+            <WrapperTheRevImage src={TheRevPhoto} alt={'therev'} />
+            <TheRevHistory dangerouslySetInnerHTML={{ __html: typeLanguage?.therev }} />
+          </TheRevContent>
+        </Section>
+        <Section style={{ display: 'flex', justifyContent: 'center' }} id="sobre" $Background={'#302f2f'}>
+          <AboutMe>
+            <WrapperProfile>
+              <ProfileImage src={Profile} alt={'me'} />
+            </WrapperProfile>
+            <AboutMeText dangerouslySetInnerHTML={{ __html: typeLanguage?.about }} />
+          </AboutMe>
+        </Section>
+      </Container>
+    </>
   );
 }
