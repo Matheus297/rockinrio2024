@@ -167,12 +167,22 @@ export default function Home() {
 
 
   const onPlayerReady = (event: any) => {
-    console.log('TEMPO', event)
-    if(playerRef) {
-      playerRef.current = event.target;  // Guarda o player na referência
-      playerRef.current.seekTo(428, true);
+    console.log('TEMPO', event);
+    
+    if (playerRef?.current) {
+        playerRef.current = event.target;  // Guarda o player na referência
+        
+        // Verifica se o método seekTo existe e executa se possível
+        if (typeof playerRef.current.seekTo === 'function') {
+            playerRef.current.seekTo(428, true);
+        } else {
+            console.error("seekTo is not a function on the player");
+        }
+    } else {
+        console.error("playerRef is not initialized");
     }
-  };
+};
+
 
   // Função para ir para um tempo específico no vídeo (em segundos)
   const goToTime = (seconds?: any) => {
