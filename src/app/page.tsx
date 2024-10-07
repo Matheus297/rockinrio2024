@@ -112,7 +112,7 @@ export default function Home() {
 
 
   const onPlayerReadyYoutube: any = () => {
-    const player = playerRef.current;
+    const player: any = playerRef.current;
     console.log('Opa', player.getPlayerState())
 
     // Verifica se o vídeo terminou (estado 0 - video ended)
