@@ -319,6 +319,7 @@ export const Section = styled.section<Props>`
     font-family: 'Adler';
     padding: 10px 20px;
     scroll-snap-align: start;
+    height: 100vh;
     background-color: ${props => props.$Background ? props.$Background : 'red'};
     position: relative;
     overflow: hidden;
