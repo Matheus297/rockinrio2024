@@ -187,7 +187,7 @@ export default function Home() {
     <>
       <Navbar />
       <Container onScroll={handleScroll}>
-        <Section ref={sectionRef} id="live" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} $Background={'#000'}>
+        <Section ref={sectionRef} id="live" style={{ display: 'flex',height: '100%', justifyContent: 'center', alignItems: 'center' }} $Background={'#000'}>
           <WrapperVideoYoutube>
           <div></div>
           <iframe
@@ -201,7 +201,7 @@ export default function Home() {
             
           </WrapperVideoYoutube>
         </Section>
-        <Section id="setlist" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} $Background={'#DBC5AE'}>
+        <Section id="setlist" style={{ display: 'flex', justifyContent: 'center', height: '100%', alignItems: 'center' }} $Background={'#DBC5AE'}>
           <ul>
             {setList.map((set: any, index: number) => {
               return (

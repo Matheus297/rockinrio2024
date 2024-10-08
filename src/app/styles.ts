@@ -13,7 +13,6 @@ export const Container = styled.div`
     height: 100vh;
     background-color: red;
     overflow-y: scroll;
-    scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     position: relative;
 `;
@@ -316,7 +315,6 @@ export const Section = styled.section<Props>`
     padding: 10px 20px;
     scroll-snap-align: start;
     background-color: ${props => props.$Background ? props.$Background : 'red'};
-    height: 100%;
     position: relative;
     overflow: hidden;
 
