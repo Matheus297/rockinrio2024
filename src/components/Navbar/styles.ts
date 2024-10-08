@@ -39,12 +39,7 @@ export const Logo = styled(Image)`
 `;
 
 
-export const Lista = styled.ul`
-    list-style: none;
-    display: flex;
-    align-items: center;
 
-`;
 
 export const ButtonItem = styled(Link)`
 
@@ -65,6 +60,17 @@ export const WrapperSelect = styled.div`
 `;
 
 export const WrapperCountry = styled.div`
+    height: 40px;
+    width: 40px;
+    background-color: red;
+    position: relative;  // Necessário para layout="fill"
+    display: flex;
+    border-radius: 50%;
+    margin-left: 40px;
+    overflow: hidden;  // Para garantir que a imagem fique dentro do círculo
+`;
+
+export const WrapperCountryCell = styled.div`
     height: 40px;
     width: 40px;
     background-color: red;
@@ -117,3 +123,50 @@ export const WrapperLabelList = styled.ul<Props>`
     }
 `;
 
+export const WrapperCell = styled.div`
+    display: none;
+
+`;
+
+export const WrapperListCountry = styled.ul<Props>`
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    overflow: scroll;
+    min-height: 120px;
+    width: 120px;
+    position: absolute;
+    bottom: -190px;
+    right: 0px;
+    display: ${props => props.$isHidden ? 'none' : 'block'};
+
+    li {
+        color: #fff;
+    }
+
+`;
+
+export const Lista = styled.ul`
+    list-style: none;
+    display: flex;
+    align-items: center;
+
+    @media only screen and (min-width: 200px) and (max-width: 720px) {
+           flex-direction: column;
+
+           ${ButtonItem} {
+                display: none;
+           }
+
+           ${WrapperCell} {
+            display: flex;
+           }
+            ${WrapperCountry} {
+                display: none;
+            }
+           ${WrapperSelect} {
+            display: none;
+           }
+    }
+
+`;

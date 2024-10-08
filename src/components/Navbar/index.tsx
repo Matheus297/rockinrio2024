@@ -2,7 +2,7 @@
 
 
 import { useContext, useEffect, useState } from "react";
-import { ArrowImage, ButtonItem, CountryImage, Lista, Logo, NavbarContent, SectionItem, WrapperCountry, WrapperImage, WrapperLabel, WrapperLabelList, WrapperSelect } from "./styles"
+import { ArrowImage, ButtonItem, CountryImage, Lista, Logo, NavbarContent, SectionItem, WrapperCell, WrapperCountry, WrapperCountryCell, WrapperImage, WrapperLabel, WrapperLabelList, WrapperListCountry, WrapperSelect } from "./styles"
 import { MainContext } from "@/context/context";
 
 import RockInRioLogo from '@/assets/rockinrio-logo.png'
@@ -24,7 +24,7 @@ const Navbar = () => {
     const [listNavbar, setListNavbar] = useState<any[]>([])
     const [language, setLanguage] = useState<any>(
         {
-            id:1,
+            id: 1,
             name: 'English',
             flag: UsaFlag
         }
@@ -37,8 +37,8 @@ const Navbar = () => {
         throw new Error('MainContext deve ser usado dentro de um MainProvider');
     }
 
-    const { 
-        setShowNavbar, 
+    const {
+        setShowNavbar,
         showNavbar,
         setTypeLanguage,
         typeLanguage,
@@ -47,55 +47,76 @@ const Navbar = () => {
 
     const flags = [
         {
-            id:1,
+            id: 1,
             name: 'English',
             flag: UsaFlag
         },
         {
-          id:2,
-          name: 'Portuguese',
-          flag: BrazilFlag
+            id: 2,
+            name: 'Portuguese',
+            flag: BrazilFlag
         },
         {
-            id:3,
+            id: 3,
             name: 'Spanish',
             flag: SpainFlag
         },
         {
-            id:4,
+            id: 4,
             name: 'Indonesian',
             flag: IndonesianFlag
         }
-      ]
+    ]
 
-      useEffect(() => {
+    useEffect(() => {
         setLanguage({
-            id:1,
+            id: 1,
             name: 'English',
             flag: UsaFlag
         })
         verifyTypeLanguage(1)
         setShowList(true)
-      }, [])
-    
-  
+    }, [])
+
+
     return (
-            <NavbarContent $isHidden={showNavbar}>
-                <WrapperImage>
-                    <Logo src={RockInRioLogo} alt='rock' />
-                </WrapperImage>
-                <Lista>
-                    <>
-                    { typeLanguage && typeLanguage.list.map((n: any, index: number) => {
+        <NavbarContent $isHidden={showNavbar}>
+            <WrapperImage>
+                <Logo src={RockInRioLogo} alt='rock' />
+            </WrapperImage>
+            <Lista>
+                <>
+                    {typeLanguage && typeLanguage.list.map((n: any, index: number) => {
                         return (
                             <ButtonItem key={index} href={n.link}>
                                 <SectionItem>{n.name}</SectionItem>
                             </ButtonItem>
                         )
                     })}
+                    <WrapperCell>
+                        <WrapperCountryCell>
+                            <CountryImage src={language?.flag} layout="fill" alt='country' />
+                        </WrapperCountryCell>
+                        <WrapperLabel onClick={() => setShowList(!showList)}>
+                            <ArrowImage $isHidden={showList} src={ArrowFlagImage} alt='arrow' />
+                        </WrapperLabel>
+                        <WrapperListCountry $isHidden={showList}>
+                            {flags && flags.map((flag: any, index: number) => {
+                                return (
+                                    <WrapperCountryCell onClick={() => {
+                                        setLanguage(flag)
+                                        setShowList(true)
+                                        verifyTypeLanguage(flag?.id)
+                                    }} style={{marginTop: '10px'}}>
+                                        <CountryImage src={flag?.flag} layout="fill" alt='country' />
+                                    </WrapperCountryCell>
+                                )
+                            })}
+                        </WrapperListCountry>
+                    </WrapperCell>
                     <WrapperCountry>
-                        <CountryImage src={language?.flag} layout="fill"  alt='country'/>
-                    </WrapperCountry>
+                            <CountryImage src={language?.flag} layout="fill" alt='country' />
+                        </WrapperCountry>
                     <WrapperSelect>
                         <WrapperLabel onClick={() => setShowList(!showList)}>
                             <div>{language.name}</div>
@@ -108,17 +129,17 @@ const Navbar = () => {
                                         setLanguage(flag)
                                         setShowList(true)
                                         verifyTypeLanguage(flag?.id)
-                                        }}>
+                                    }}>
                                         <li>{flag?.name}</li>
                                     </ButtonItem>
                                 )
                             })}
                         </WrapperLabelList>
                     </WrapperSelect>
-                    </>
-                </Lista>
-            </NavbarContent>
-        )
+                </>
+            </Lista>
+        </NavbarContent>
+    )
 }
 
 
