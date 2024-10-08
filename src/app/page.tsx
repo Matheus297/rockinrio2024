@@ -57,59 +57,59 @@ export default function Home() {
   const [setList, setSetList] = useState<any>([
     {
       name: 'Game over',
-      time: 0
+      time: 428
     },
     {
       name: 'Afterlife',
-      time: 225
+      time: 662
     },
     {
       name: 'Mattel',
-      time: 593
+      time: 1032
     },
     {
       name: 'Hail to the king',
-      time: 965
+      time: 1362
     },
     {
       name: 'The stage',
-      time: 1304
+      time: 1750
     },
     {
       name: 'Buried alive',
-      time: 1836
+      time: 2281
     },
     {
       name: 'Gunslinger',
-      time: 2420
+      time: 2842
     },
     {
       name: 'Bat country',
-      time: 2702
+      time: 3148
     },
     {
       name: 'So far away',
-      time: 3177
+      time: 3620
     },
     {
       name: 'Nobody',
-      time: 3540
+      time: 3978
     },
     {
       name: 'Nightmare',
-      time: 3976
+      time: 4417
     },
     {
       name: 'Uhnholy confessions',
-      time: 4354
+      time: 4804
     },
     {
       name: 'Cosmic',
-      time: 4877
+      time: 5328
     },
     {
       name: 'A little piece of heaven',
-      time: 5348
+      time: 5785
     }
   ])
 
@@ -192,7 +192,7 @@ export default function Home() {
           <div></div>
           <iframe
               ref={playerRef}
-              src="https://drive.google.com/file/d/19XOhi9iHw4PUDjkx7Ao_CfGtTXL33AmC/preview"
+              src="https://drive.google.com/file/d/19XOhi9iHw4PUDjkx7Ao_CfGtTXL33AmC/preview?t=433"
               width="2560"
               height="1080"
               allow="autoplay"
