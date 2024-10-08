@@ -84,6 +84,10 @@ export const ButtonItem = styled.button`
     outline: none;
     font-family: 'Adler';
 
+    li {
+        color: #000;
+    }
+
 `;
 
 export const WrapperVideoYoutube = styled.div`
@@ -250,6 +254,7 @@ export const AlbumContainer = styled.div`
 export const TheRevContent = styled.div`
     width: 100%;
     height: 100%;
+    color: #000;
     display: flex;
     flex-direction: column;
     justify-content: center;
