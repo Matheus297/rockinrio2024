@@ -169,9 +169,9 @@ export default function Home() {
 
   // Função para ir para um tempo específico no vídeo (em segundos)
   const goToTime = (seconds: any) => {
-    const videoId = '1g2IqvhGgflzNtoy0IFvy7iqkuqZDxdf4'; // ID do seu vídeo
+    const videoId = '19XOhi9iHw4PUDjkx7Ao_CfGtTXL33AmC'; // ID do seu vídeo
     const timeParam = `t=${seconds}`;
-    playerRef.current.src = `https://drive.google.com/file/d/${videoId}/preview?${timeParam}`;
+    playerRef.current.src = `https://drive.google.com/file/d/19XOhi9iHw4PUDjkx7Ao_CfGtTXL33AmC/preview?${timeParam}`;
     playerRef.current.allow = 'autoplay'
 
 
@@ -192,7 +192,7 @@ export default function Home() {
           <div></div>
           <iframe
               ref={playerRef}
-              src="https://drive.google.com/file/d/1g2IqvhGgflzNtoy0IFvy7iqkuqZDxdf4/preview"
+              src="https://drive.google.com/file/d/19XOhi9iHw4PUDjkx7Ao_CfGtTXL33AmC/preview"
               width="2560"
               height="1080"
               allow="autoplay"
